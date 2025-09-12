@@ -16,6 +16,16 @@ app.get('/sum', (req, res) => {
   res.json({ sum: a + b });
 });
 
+
+
+// ❌ insecure randomness endpoint (for demo purposes only)
+app.get('/token', (req, res) => {
+  // using Math.random() for a token (predictable!)
+  const token = Math.random().toString(36).substring(2);
+  res.send(`Your token: ${token}`);
+});
+
+
 app.listen(PORT, () => {
   console.log(`snyk-demo-node listening on port ${PORT}`);
 });
